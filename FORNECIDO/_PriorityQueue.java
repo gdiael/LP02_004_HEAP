@@ -1,7 +1,7 @@
-public class PriorityQueue {
+public class _PriorityQueue {
 
 	public static void main(String[] args) {
-		PriorityQueue p = new PriorityQueue();
+		_PriorityQueue p = new _PriorityQueue();
 		p.add(10);
 		p.add(30);
 		p.add(20);
@@ -16,13 +16,13 @@ public class PriorityQueue {
 	protected int size;
 	protected int capacity;
 
-	public PriorityQueue(int capacity) {
+	public _PriorityQueue(int capacity) {
 		size = 0;
 		this.capacity = capacity;
 		elements = new int[capacity];
 	}
 
-	public PriorityQueue() {
+	public _PriorityQueue() {
 		this(100);
 	}
 

@@ -1,9 +1,6 @@
+import java.io.File;
 
 public class Heap extends PriorityQueue {
-	
-	public static void main(String [] args){
-		// File dir(".");
-	}
 	
 	public Heap(int [] vetor){
 	}
