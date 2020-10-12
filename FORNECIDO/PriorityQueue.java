@@ -8,8 +8,8 @@ public class PriorityQueue {
 		p.add(15);
 		p.remove();
 		p.add(40);
-		System.out.println(p); //TODO print
-		System.out.println(p.get()); //TODO print
+		System.out.println(p); //Todo print
+		System.out.println(p.get()); //Todo print
 	}
 
 	protected int[] elements;

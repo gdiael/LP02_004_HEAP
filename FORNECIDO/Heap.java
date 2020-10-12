@@ -2,8 +2,7 @@
 public class Heap extends PriorityQueue {
 	
 	public static void main(String [] args){
-		File dir(".");
-		
+		// File dir(".");
 	}
 	
 	public Heap(int [] vetor){
@@ -16,12 +15,15 @@ public class Heap extends PriorityQueue {
 		elements[size] = value;
 		size += 1;
 		subir(size-1);
+		return false;
 	}
 	
 	public int remove() {
+		return 0;
 	}
 	
 	public int get() {
+		return 0;
 	}
 	
 	public void update(int value, int newValue) {
