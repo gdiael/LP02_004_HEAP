@@ -1,5 +1,3 @@
-import java.io.File;
-
 public class Heap extends PriorityQueue {
 	
 	public Heap(int [] vetor){
