@@ -4,12 +4,12 @@ public class Heap extends PriorityQueue {
 		super(100);
 	}
 
-	public Heap(int[] vetor){
-		if(vetor.length > 0){
-			this.size = vetor.length;
-			this.capacity = vetor.length;
-			this.elements = vetor;
-			for(int i = this.size/2; i>0; i--){
+	public Heap(int[] vector){
+		if(vector.length > 0){
+			this.size = vector.length;
+			this.capacity = vector.length;
+			this.elements = vector;
+			for(int i = this.size/2-1; i>=0; i--){
 				descer(i);
 			}
 		}else{
@@ -33,7 +33,7 @@ public class Heap extends PriorityQueue {
 	}
 
 	// verifica se o elemento e seu pai atendem a condição de heap, se não, sobe este elemento
-	public void subir(int i){
+	private void subir(int i){
 		if(this.isEmptyWithWarning()) return;
 
 		int parent = (i+1)/2-1;
@@ -46,7 +46,7 @@ public class Heap extends PriorityQueue {
 	}
 	
 	// verifica se o elemento e seus filhos atendem a condição de heap, se não, desce este elemento
-	public void descer(int i){
+	private void descer(int i){
 		if(this.isEmptyWithWarning()) return;
 
 		int son = (i+1)*2-1; // sera o indice do primeiro filho
@@ -63,7 +63,7 @@ public class Heap extends PriorityQueue {
 	}
 
 	// troca dois elementos de posição
-	public void trocar(int a, int b){
+	private void trocar(int a, int b){
 		if(this.isEmptyWithWarning()) return;
 
 		int aux = this.elements[a];
@@ -71,7 +71,19 @@ public class Heap extends PriorityQueue {
 		this.elements[b] = aux;
 	}
 
+	private void resize(){
+		int[] newVector = new int[this.size*2];
+		for(int i=0; i < this.size; i++){
+			newVector[i] = this.elements[i];
+		}
+		this.elements = newVector;
+		this.capacity = this.elements.length;
+	}
+
 	public boolean add(int value) {
+		if(this.size == this.capacity){
+			this.resize();
+		}
 		this.elements[this.size] = value;
 		this.size += 1;
 		subir(this.size-1);
@@ -83,9 +95,11 @@ public class Heap extends PriorityQueue {
 		if(this.isEmptyWithWarning()) return -1;
 
 		int valor = this.elements[0];
-		this.trocar(0, this.size-1);
 		this.size -= 1;
-		this.descer(0);
+		if(this.size != 0){
+			this.trocar(0, this.size);
+			this.descer(0);
+		}
 		return valor;
 	}
 	
@@ -99,7 +113,7 @@ public class Heap extends PriorityQueue {
 	// atualiza um determinado valor
 	public void update(int valor, int newValue) {
 		if(this.isEmptyWithWarning()) return;
-		
+
 		Boolean noFind = true;
 		for(int i = 0;i < this.size;i++){
 			if(this.elements[i] == valor){
@@ -114,6 +128,15 @@ public class Heap extends PriorityQueue {
 				break;
 			}
 		}
-		if(noFind) System.out.println("Valor não encontrado!");
+		if(noFind) System.out.println("Valor nao encontrado!");
+	}
+
+	// Converte os valores da lista para string
+	public String toString(){
+		String saida = "";
+		for(int i=0; i<this.size; i++){
+			saida += this.elements[i] + " ";
+		}
+		return saida;
 	}
 }
