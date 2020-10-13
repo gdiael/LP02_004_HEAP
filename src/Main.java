@@ -5,7 +5,7 @@ public class Main {
         System.out.println("Questao 03 - Lista 04");
         printPath(System.getenv("USERPROFILE") + "\\Downloads", "");
         System.out.println("");
-        System.out.println("Questão 02 - Lista 04");
+        System.out.println("Questao 02 - Lista 04");
         int[] vector = {6, 8, 10, 12, 20};
         Heap lista = new Heap(vector);
         System.out.println(lista);
